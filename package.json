@@ -1,0 +1,29 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server",
+    "server": "nodemon server",
+    "app": "npm start --prefix app",
+    "dev": "concurrently \"npm run server\" \"npm run app\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@mui/lab": "^5.0.0-alpha.64",
+    "config": "^3.3.6",
+    "express": "^4.17.2",
+    "express-validator": "^6.14.0",
+    "fs": "0.0.1-security",
+    "mongoose": "^6.1.6",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.4",
+    "multer-gridfs-storage": "^5.0.2"
+  },
+  "devDependencies": {
+    "concurrently": "^7.0.0",
+    "nodemon": "^2.0.15"
+  }
+}
