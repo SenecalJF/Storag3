@@ -60,18 +60,11 @@ router.post(
 //@ access Public
 
 router.delete(
-  '/',
-  [check('id', 'id is required').not().isEmpty()],
+  '/delete/:id',
+
   async (req, res) => {
     try {
-      const errors = validationResult(req);
-
-      if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
-      }
-
-      let id = req.body.id;
-      const item = await Item.findById(id);
+      const item = await Item.findOne({ id: req.params.id });
       if (!item) {
         return res.status(404).json({ msg: 'Item not found' });
       }

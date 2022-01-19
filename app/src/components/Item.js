@@ -6,9 +6,19 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
+import axios from 'axios';
 
 const Item = ({ item }) => {
-  const { name, category, width, height, length, price } = item;
+  const { id, name, category, width, height, length, price } = item;
+  const [update, setUpdate] = React.useState(false);
+
+  React.useEffect(() => {}, [update]);
+
+  const deleteItem = async (id) => {
+    await axios.delete(`/item/delete/${id}`);
+    window.location.reload(false);
+  };
+
   const card = (
     <React.Fragment>
       <CardContent>
@@ -37,7 +47,14 @@ const Item = ({ item }) => {
             </Button>
           </Grid>
           <Grid item xs={6}>
-            <Button size='small' color='error' variant='outlined'>
+            <Button
+              size='small'
+              color='error'
+              variant='outlined'
+              onClick={() => {
+                deleteItem(id);
+              }}
+            >
               Delete
             </Button>
           </Grid>
